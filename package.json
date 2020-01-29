@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --outputPath=docs"
+    "prod": "ng build --outputPath=docs --prod --base-href=docs"
   },
   "private": true,
   "dependencies": {
