@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import filter from 'lodash/filter';
 import sumBy from 'lodash/sumBy';
 
@@ -20,6 +21,9 @@ export class AppComponent {
   totalCompletedTransaction = 0;
   totalCancel = 0;
 
+  constructor(private http: HttpClient) {
+  }
+
   updateResult() {
     this.orders = JSON.parse(this.apiResult);
     console.log(this.orders);
@@ -34,5 +38,14 @@ export class AppComponent {
       return order.status === 'canceled';
     });
     this.totalCancel = cancelOrder.length;
+
+    // this.http.get('https://tiki.vn/api/v2/me/orders?page=1&limit=1000000').subscribe(result => {
+    //   console.log('result');
+    //   console.log(result);
+    // });
+
+    // https://tiki.vn/api/v2/me/orders/546858057?include=items,price_summary,child_orders
+    // https://tiki.vn/api/v2/me/orders/855632613?include=items,price_summary,child_orders
+    // https://tiki.vn/api/v2/me
   }
 }
